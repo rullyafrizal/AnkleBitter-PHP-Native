@@ -70,12 +70,14 @@ if (isset($_GET['data'])) {
             <input type="text" class="form-control" name="nama" id="nama" value="<?= $nama; ?>">
           </div>
         </div>
-        <div class="form-group row">
-          <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi Produk</label>
-          <div class="col-sm-7">
-            <textarea class="form-control" name="deskripsi" id="editor1" rows="12"><?= $deskripsi; ?></textarea>
+          <div class="form-group row">
+              <div class="col-sm-3 col-form-label">
+                  Deskripsi
+              </div>
+              <div class="col-sm-7">
+                  <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;"><?php echo $deskripsi;?></textarea>
+              </div>
           </div>
-        </div>
         <div class="form-group row">
           <label for="harga" class="col-sm-3 col-form-label">Harga Produk</label>
           <div class="col-sm-7">

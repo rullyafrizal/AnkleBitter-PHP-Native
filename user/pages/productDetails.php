@@ -44,16 +44,6 @@
                         <img src="./assets/images/contoh_vans.jpg" class="w-100 main-image" alt=""/>
                     </transition>
                 </div>
-                <!--                <div class="col-lg-2">-->
-                <!--                    <div class="row">-->
-                <!--                        <div class="col-3 col-lg-12 mt-2 mt-lg-0" v-for="(photo, index) in photos" :key="photo.id" data-aos="zoom-in" data-aos-delay="100">-->
-                <!--                            <a href="#" @click="changeActive(index)">-->
-                <!--                                <img :src="photo.url" class="w-100 thumbnail-image" :class="{ active: index == activePhoto }" alt=""-->
-                <!--                                />-->
-                <!--                            </a>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </div>
         </div>
     </section>
@@ -69,7 +59,7 @@
                     </div>
                     <div class="col-lg-2" data-aos="zoom-in">
                         <?php
-                            if (isset($_SESSION['id_customer'])) {
+                            if (isset($_SESSION['id_user'])) {
                                 if ((int)$stok > 0) {
                                     echo '<form action="" method="POST" enctype="multipart/form-data">
                                             <button type="submit" class="btn btn-success px-4 text-white btn-block mb-3">

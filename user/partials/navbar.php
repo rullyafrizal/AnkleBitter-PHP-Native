@@ -19,7 +19,7 @@
                     <a href="index.php?page=brands" class="nav-link">Brands</a>
                 </li>
                 <?php
-                if (!isset($_SESSION['id_customer'])) {
+                if (!isset($_SESSION['id_user'])) {
                     echo '<li class="nav-item">
                             <a href="index.php?page=register" class="nav-link">Sign Up</a>
                         </li>
@@ -32,19 +32,62 @@
             </ul>
 
             <?php
-                if (isset($_SESSION['id_customer'])) {
-                    $id = $_SESSION['id_customer'];
-                    $sql = "SELECT `nama` FROM `user` WHERE `id_user`='$id'";
+                if (isset($_SESSION['id_user'])) {
+                    $id_user = $_SESSION['id_user'];
+                    $sql = "SELECT `nama` FROM `user` WHERE `id_user`='$id_user'";
                     $query = mysqli_query($koneksi, $sql);
                     while ($data = mysqli_fetch_row($query)) {
                         $nama = $data[0];
                     }
+                    if ($_SESSION['role'] === 'customer') {
+                        $sql_cust = "SELECT `id_customer` FROM `customer` WHERE `id_user`='$id_user'";
+                        $query_cust = mysqli_query($koneksi, $sql_cust);
+                        while ($data = mysqli_fetch_row($query_cust)) {
+                            $id_cust = $data[0];
+                        }
+                        ?>
+                        <ul class="navbar-nav d-none d-lg-flex">
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
+                                        <img src="./assets/images/icon-user.png" alt="" width="40px" class="rounded-circle mr-2 profile-picture"/>
+                                        Hi, <?php echo $nama;?>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item">Dashboard</a>
+                                        <a href="#" class="dropdown-item">Settings</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="index.php?page=logout">
+                                            Logout
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link d-inline-block mt-2">
+                                        <?php
+                                            $sql_cart = "SELECT COUNT(`id_customer`) FROM `keranjang_belanja` WHERE `id_customer`='$id_cust'";
+                                            $query_cart = mysqli_query($koneksi, $sql_cart);
+                                            while($data_cart = mysqli_fetch_row($query_cart)) {
+                                                $jumlah_cart = $data_cart[0];
+                                            }
 
-                    echo '<ul class="navbar-nav d-none d-lg-flex">
+                                            if ((int) $jumlah_cart === 0) {
+                                                echo '<img src="./assets/images/icon-cart-empty.svg" alt=""/>';
+                                            } else if ((int) $jumlah_cart > 0) {
+                                                echo '<img src="./assets/images/icon-cart-filled.svg" alt=""/>
+                                                        <div class="card-badge">' . $jumlah_cart .'</div>';
+                                            }
+                                        ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php
+                    } else if ($_SESSION['role'] === 'admin') {
+                        ?>
+                        <ul class="navbar-nav d-none d-lg-flex">
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                                     <img src="./assets/images/icon-user.png" alt="" width="40px" class="rounded-circle mr-2 profile-picture"/>
-                                    Hi, ' . $nama . '
+                                    Hi, <?php echo $nama;?>
                                 </a>
                                 <div class="dropdown-menu">
                                     <a href="#" class="dropdown-item">Dashboard</a>
@@ -55,30 +98,12 @@
                                     </a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link d-inline-block mt-2">
-                                    <!--                        <img src="./assets/images/icon-cart-filled.svg" alt=""/>-->
-                                    <div class="card-badge">0</div>
-                                    <img src="./assets/images/icon-cart-empty.svg" alt=""/>
-                                </a>
-                            </li>
-                        </ul>';
+                        </ul>
+                    <?php
+                    }
                 }
-            ?>
+                ?>
 
-
-<!--            <ul class="navbar-nav d-block d-lg-none">-->
-<!--                <li class="nav-item">-->
-<!--                    <a href="#" class="nav-link">-->
-<!--                        Hi, Rully Afrizal Alwin-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a href="#" class="nav-link d-inline-block">-->
-<!--                        Cart-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
 
         </div>
     </div>

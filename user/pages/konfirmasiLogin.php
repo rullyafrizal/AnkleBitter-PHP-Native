@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
         while ($data = mysqli_fetch_row($query)) {
             $id_user = $data[0];
             $role = $data[1];
-            $_SESSION['id_customer'] = $id_user;
+            $_SESSION['id_user'] = $id_user;
             $_SESSION['role'] = $role;
             header("Location:index.php");
         }

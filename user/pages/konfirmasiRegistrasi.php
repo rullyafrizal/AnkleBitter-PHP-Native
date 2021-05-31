@@ -14,15 +14,28 @@ if (isset($_POST['register'])) {
         $sql_r = "INSERT INTO `user` (`nama`, `email`, `password`, `role`)
                     VALUES  ('$nama', '$email', '$password', 'customer')";
         $query_r = mysqli_query($koneksi, $sql_r);
+
+
+
+
         // auto-login setelah registrasi
         $sql_l = "select `id_user`, `role` from `user` where `email`='$email' and `password`='$password'";
         $query_l = mysqli_query($koneksi, $sql_l);
+
+
         while ($data = mysqli_fetch_row($query_l)) {
             $id_user = $data[0];
             $role = $data[1];
         }
-        $_SESSION['id_customer'] = $id_user;
+        $_SESSION['id_user'] = $id_user;
         $_SESSION['role'] = $role;
+
+        //memasukkan user ke tabel customer
+        $sql_c = "INSERT INTO `customer` (`nama`, `id_user`) 
+                    VALUES ('$nama', '$id_user')";
+        $query_c = mysqli_query($koneksi, $sql_c);
+
+
         header("Location:index.php");
     }
 }

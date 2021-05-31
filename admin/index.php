@@ -29,7 +29,7 @@ if (isset($_GET["pages"])) {
 if (isset($_GET["pages"])) {
     $include = $_GET["pages"];
     //cek apakah ada session id admin
-    if (isset($_SESSION['id_user'])) {
+    if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'admin') {
 ?>
 
         <body class="hold-transition sidebar-mini layout-fixed">

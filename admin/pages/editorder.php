@@ -68,45 +68,46 @@ if (isset($_GET['data'])) {
         <div class="form-group row">
           <label for="nama" class="col-sm-3 col-form-label">Nama Customer</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" name="customer" id="nama" value="<?= $customer; ?>">
+            <input readonly type="text" class="form-control" name="customer" id="nama" value="<?= $customer; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="harga" class="col-sm-3 col-form-label">Total Harga</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" name="harga" id="harga" value="<?= $harga; ?>">
+            <input readonly type="text" class="form-control" name="harga" id="harga" value="<?= $harga; ?>">
           </div>
         </div>
         <div class="form-group row">
-          <label for="Status" class="col-sm-3 col-form-label">Status</label></label>
-          <div class="col-sm-7">
-            <input type="text" class="form-control" name="status" id="Status" value="<?= $status; ?>">
-          </div>
+            <label for="Status" class="col-sm-3 col-form-label">Status</label>
+            <div class="col-sm-7">
+              <select class="form-control" id="Status" name="status">
+                  <option value="">--Status Pesanan--</option>
+                  <option value="Menunggu Bukti Pembayaran">Menunggu Bukti Pembayaran</option>
+                  <option value="Sedang Dikonfirmasi">Sedang Diverifikasi</option>
+                  <option value="Pesanan Diproses">Pesanan Diproses</option>
+                  <option value="Pesanan Dikirim">Pesanan Dikirim</option>
+                  <option value="Pesanan Diterima">Pesanan Diterima</option>
+              </select>
+            </div>
         </div>
         <div class="form-group row">
           <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Order</label>
           <div class="col-sm-7">
             <div class="input-group-append">
-              <input type="date" class="form-control" name="tanggal" id="tanggal" value="<?= $tanggal; ?>">
+              <input readonly type="date" class="form-control" name="tanggal" id="tanggal" value="<?= $tanggal; ?>">
             </div>
           </div>
         </div>
-        <!-- <div class="form-group row">
-          <label for="Alamat" class="col-sm-3 col-form-label">Alamat Pengiriman</label>
-          <div class="col-sm-7">
-            <textarea class="form-control" name="alamat" id="editor1" rows="12"><?= $alamat; ?></textarea>
-          </div>
-        </div> -->
         <div class="form-group row">
           <label for="address" class="col-sm-3 col-form-label">Alamat Pengiriman</label></label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" name="alamat" id="address" value="<?= $alamat; ?>">
+            <input readonly type="text" class="form-control" name="alamat" id="address" value="<?= $alamat; ?>">
           </div>
         </div>
           <div class="form-group row">
               <label for="rekening" class="col-sm-3 col-form-label">Rekening Pembayaran</label>
               <div class="col-sm-7">
-                  <select class="form-control" name="rek" id="rekening">
+                  <select readonly class="form-control" name="rek" id="rekening">
                       <option value="">-- Pilih Rekening --</option>
                       <?php
                       $sql_k = "SELECT `id_rekening_pembayaran`,`nomor_rekening` FROM `rekening_pembayaran` ORDER BY `id_rekening_pembayaran`";
@@ -125,7 +126,7 @@ if (isset($_GET['data'])) {
         <div class="form-group row">
           <label for="Catatan" class="col-sm-3 col-form-label">Catatan</label>
           <div class="col-sm-7">
-            <textarea class="form-control" name="catatan" id="editor1" rows="12"><?= $catatan; ?></textarea>
+            <textarea readonly class="form-control" name="catatan" id="editor1" rows="12"><?= $catatan; ?></textarea>
           </div>
         </div>
 

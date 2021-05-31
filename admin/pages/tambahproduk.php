@@ -64,13 +64,6 @@
                     </div>
                 </div>
 
-
-                <!--        <div class="form-group row">-->
-                <!--          <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi Produk</label>-->
-                <!--          <div class="col-sm-7">-->
-                <!--            <textarea class="form-control" name="deskripsi" id="editor1" rows="12"></textarea>-->
-                <!--          </div>-->
-                <!--        </div>-->
                 <div class="form-group row">
                     <label for="harga" class="col-sm-3 col-form-label">Harga Produk</label>
                     <div class="col-sm-7">

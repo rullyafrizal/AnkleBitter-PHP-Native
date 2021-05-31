@@ -3,7 +3,7 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
   if ($_GET['aksi'] == 'hapus') {
     $id_order = $_GET['data'];
     $sql_b = "delete from `order` where `id_order` = '$id_order'";
-    mysqli_query($koneksi, $sql_a);
+    mysqli_query($koneksi, $sql_b);
   }
 }
 
