@@ -77,6 +77,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="foto" class="col-sm-3 col-form-label">Resi Pengiriman
+                    </label>
+                    <div class="col-sm-7">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="gambar" id="customFile">
+                            <label class="custom-file-label" for="customFile">Pilih Gambar Produk</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="kategori" class="col-sm-3 col-form-label">Kategori Produk</label>
                     <div class="col-sm-7">
                         <select class="form-control" id="kategori" name="kategori_produk">

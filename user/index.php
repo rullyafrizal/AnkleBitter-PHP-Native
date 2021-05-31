@@ -9,6 +9,8 @@
             include('./pages/logout.php');
         } else if ($page === 'konfirmasi-registrasi') {
             include('./pages/konfirmasiRegistrasi.php');
+        } else if ($page === 'konfirmasi-cart') {
+            include('./pages/konfirmasiCart.php');
         }
     }
 ?>
@@ -39,6 +41,8 @@
                 include('./pages/brandsCertain.php');
             } else if ($page === 'product') {
                 include('./pages/productDetails.php');
+            } else if ($page === 'cart') {
+                include('./pages/cart.php');
             }
         } else {
             include('./pages/home.php');

@@ -59,10 +59,11 @@
                     </div>
                     <div class="col-lg-2" data-aos="zoom-in">
                         <?php
-                            if (isset($_SESSION['id_user'])) {
+                            if (isset($_SESSION['id_customer'])) {
                                 if ((int)$stok > 0) {
-                                    echo '<form action="" method="POST" enctype="multipart/form-data">
-                                            <button type="submit" class="btn btn-success px-4 text-white btn-block mb-3">
+                                    echo '<form action="index.php?page=konfirmasi-cart" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="id_product" value="' . $id_produk . '">
+                                            <button type="submit" name="insert_cart" class="btn btn-success px-4 text-white btn-block mb-3">
                                                 Add to Cart
                                             </button>
                                         </form>';

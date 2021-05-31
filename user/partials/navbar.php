@@ -45,6 +45,7 @@
                         while ($data = mysqli_fetch_row($query_cust)) {
                             $id_cust = $data[0];
                         }
+                        $_SESSION['id_customer'] = $id_cust;
                         ?>
                         <ul class="navbar-nav d-none d-lg-flex">
                                 <li class="nav-item dropdown">
@@ -62,7 +63,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link d-inline-block mt-2">
+                                    <a href="index.php?page=cart" class="nav-link d-inline-block mt-2">
                                         <?php
                                             $sql_cart = "SELECT COUNT(`id_customer`) FROM `keranjang_belanja` WHERE `id_customer`='$id_cust'";
                                             $query_cart = mysqli_query($koneksi, $sql_cart);
@@ -90,7 +91,7 @@
                                     Hi, <?php echo $nama;?>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Dashboard</a>
+                                    <a href="/admin/index.php" class="dropdown-item">Dashboard</a>
                                     <a href="#" class="dropdown-item">Settings</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="index.php?page=logout">
