@@ -62,10 +62,22 @@ if (isset($_POST['checkout'])) {
         }
 
         for ($i = 0; $i < count($id_product); $i++) {
-            $sql_update_stok = "UPDATE `produk` 
-                                SET `stok`=`stok`-'$stok[$i]'
-                                WHERE `id_produk`='$id_product[$i]'";
-            mysqli_query($koneksi, $sql_update_stok);
+
+            $sql_cek_stok = "SELECT `stok` FROM `produk` WHERE `id_produk`='$id_product[$i]'";
+            $query_cek_stok = mysqli_query($koneksi, $sql_cek_stok);
+            while ($data_cek_stok = mysqli_fetch_row($query_cek_stok)) {
+                $cek_stok = $data_cek_stok[0];
+            }
+
+            if ($stok[$i] <= $cek_stok) {
+                $sql_update_stok = "UPDATE `produk` 
+                                    SET `stok`=`stok`-'$stok[$i]'
+                                    WHERE `id_produk`='$id_product[$i]'";
+                mysqli_query($koneksi, $sql_update_stok);
+            } else {
+                throw new mysqli_sql_exception();
+            }
+
         }
 
         $sql_delete_cart = "DELETE FROM `keranjang_belanja` WHERE `id_customer`='$id_cust'";
@@ -73,10 +85,10 @@ if (isset($_POST['checkout'])) {
 
         mysqli_commit($koneksi);
 
-        header('Location:index.php?page=checkout&data=' . $id_order);
+        header('Location:index.php?page=checkout&notif=success&data=' . $id_order);
     } catch (mysqli_sql_exception $exception) {
         mysqli_rollback($koneksi);
-        throw $exception;
+        header('Location:index.php?page=checkout&notif=error');
     }
 
 }

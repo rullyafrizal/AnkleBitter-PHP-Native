@@ -11,13 +11,13 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="./assets/images/ramadan.jpg" alt="Carousel Image" class="d-block w-100 rounded"/>
+                                <img src="./assets/images/ramadan.png" alt="Carousel Image" class="d-block w-100"/>
                             </div>
                             <div class="carousel-item">
-                                <img src="./assets/images/giveaway.jpg" alt="Carousel Image" class="d-block w-100 rounded"/>
+                                <img src="./assets/images/giveaway.png" alt="Carousel Image" class="d-block w-100"/>
                             </div>
                             <div class="carousel-item">
-                                <img src="./assets/images/welcome.jpg" alt="Carousel Image" class="d-block w-100 rounded"/>
+                                <img src="./assets/images/welcome.png" alt="Carousel Image" class="d-block w-100"/>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                                 <a href="index.php?page=product&data=' . $id_produk .'" class="component-products d-block">
                                     <div class="products-thumbnail">
                                         <div class="products-image"
-                                             style="background-image: url('. "./assets/images/contoh_vans.jpg" . ')"></div>
+                                             style="background-image: url('. "https://dummyimage.com/16:9x1080" . ')"></div>
                                     </div>
                                     <div class="products-text">
                                         ' . $title . '

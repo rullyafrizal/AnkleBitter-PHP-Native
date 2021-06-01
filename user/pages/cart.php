@@ -58,6 +58,8 @@
                                     $gambar_produk = $data[4];
                                     $harga = $data[5];
                                     $stok = $data[6];
+
+                                    $format_harga = number_format($harga, 0, ",", ".");
                                     echo '<tr>
                                         <td style="width: 20%;">
                                             <img src="https://dummyimage.com/16:9x1080" alt="" class="cart-image"/>
@@ -67,7 +69,7 @@
                                             <div class="product-subtitle">Stock : ' . $stok . '</div>
                                         </td>
                                         <td style="width: 25%;">
-                                            <div class="product-title">Rp ' . $harga . '</div>
+                                            <div class="product-title">Rp' . $format_harga . '</div>
                                             <div class="product-subtitle">IDR</div>
                                         </td>
                                         <td style="width: 20%;">
@@ -187,27 +189,29 @@
                         $total_price = 0;
                     }
 
+                    $format_price = number_format($total_price, 0, ",", ".");
+
                     $kode_unik = rand(100, 500);
                     $total_order = $total_price - $kode_unik;
                 ?>
                 <input type="hidden" name="total_order" value="<?php echo $total_order;?>">
                 <div class="row" data-aos="fade-up" data-aos-delay="200">
                     <div class="col-4 col-md-2">
-                        <div class="product-title">Rp <?php echo $ppn; ?></div>
+                        <div class="product-title">Rp<?php echo $ppn; ?></div>
                         <div class="product-subtitle">PPN Tax</div>
                     </div>
                     <div class="col-4 col-md-2">
-                        <div class="product-title">Rp 19000</div>
+                        <div class="product-title">Rp<?= number_format(19000, 0, ",", ".")?></div>
                         <div class="product-subtitle">Ship to Everywhere</div>
                     </div>
                     <div class="col-4 col-md-2">
-                        <div class="product-title text-success">Rp <?php echo $total_price; ?></div>
+                        <div class="product-title text-success">Rp<?php echo $format_price; ?></div>
                         <div class="product-subtitle">Total</div>
                     </div>
                     <?php
                         if ($total_price > 0) {
                             ?>
-                            <div class="col-8 col-md-3">
+                            <div class="col-10 col-md-3">
                                 <button name="checkout" type="submit" class="btn btn-success mt-4 px-4 btn-block">
                                     Checkout Now
                                 </button>
