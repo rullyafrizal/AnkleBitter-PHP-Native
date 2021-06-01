@@ -71,14 +71,17 @@
                                     echo '<button type="submit" class="btn btn-success disabled px-4 text-white btn-block mb-3">
                                                 Stok Kosong
                                             </button>';
-
-
                                 }
-
                             } else {
-                                echo '<a href="index.php?page=login" class="btn btn-success px-4 text-white btn-block mb-3">
-                                            Sign in to Add
-                                        </a>';
+                                if (!isset($_SESSION['role'])) {
+                                    echo '<a href="index.php?page=login" class="btn btn-success px-4 text-white btn-block mb-3">
+                                                Sign in to Add
+                                            </a>';
+                                } else {
+                                    if ($_SESSION['role'] === 'admin') {
+
+                                    }
+                                }
                             }
                         ?>
                     </div>

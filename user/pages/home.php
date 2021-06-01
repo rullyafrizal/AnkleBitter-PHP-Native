@@ -11,13 +11,13 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="./assets/images/banner.jpg" alt="Carousel Image" class="d-block w-100"/>
+                                <img src="./assets/images/ramadan.jpg" alt="Carousel Image" class="d-block w-100 rounded"/>
                             </div>
                             <div class="carousel-item">
-                                <img src="./assets/images/banner.jpg" alt="Carousel Image" class="d-block w-100"/>
+                                <img src="./assets/images/giveaway.jpg" alt="Carousel Image" class="d-block w-100 rounded"/>
                             </div>
                             <div class="carousel-item">
-                                <img src="./assets/images/banner.jpg" alt="Carousel Image" class="d-block w-100"/>
+                                <img src="./assets/images/welcome.jpg" alt="Carousel Image" class="d-block w-100 rounded"/>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,6 @@
                     $id_kategori = $data_k[0];
                     $kategori_produk = $data_k[1];
                     $gambar_kategori = $data_k[2];
-                    $kategoriLower = strtolower($kategori_produk);
                     echo '<div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="100">
                                 <a href="index.php?page=categories-certain&data=' . $id_kategori . '" class="component-categories d-block">
                                     <div class="categories-image">
