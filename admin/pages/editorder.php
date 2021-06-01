@@ -83,7 +83,7 @@ if (isset($_GET['data'])) {
               <select class="form-control" id="Status" name="status">
                   <option value="">--Status Pesanan--</option>
                   <option value="Menunggu Bukti Pembayaran">Menunggu Bukti Pembayaran</option>
-                  <option value="Sedang Dikonfirmasi">Sedang Diverifikasi</option>
+                  <option value="Pembayaran Diverifikasi">Pembayaran Diverifikasi</option>
                   <option value="Pesanan Diproses">Pesanan Diproses</option>
                   <option value="Pesanan Dikirim">Pesanan Dikirim</option>
                   <option value="Pesanan Diterima">Pesanan Diterima</option>

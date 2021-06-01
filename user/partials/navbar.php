@@ -50,7 +50,7 @@
                         <ul class="navbar-nav d-none d-lg-flex">
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                        <img src="./assets/images/icon-user.png" alt="" width="40px" class="rounded-circle mr-2 profile-picture"/>
+                                        <img src="./assets/images/icon-user.png" alt="" width="35x" class="rounded-circle mr-2 profile-picture"/>
                                         Hi, <?php echo $nama;?>
                                     </a>
                                     <div class="dropdown-menu">

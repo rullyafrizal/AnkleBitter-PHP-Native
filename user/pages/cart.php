@@ -96,54 +96,54 @@
                     <h2 class="mb-4">Shipping Details</h2>
                 </div>
             </div>
-            <form action="index.php?page=konfirmasi-checkout" method="POST" enctype="multipart/form-data">
-                <?php
-                    $sql_cust = "SELECT * FROM `customer` WHERE `id_customer`='$id_customer'";
-                    $query_cust = mysqli_query($koneksi, $sql_cust);
+            <?php
+                $sql_cust = "SELECT * FROM `customer` WHERE `id_customer`='$id_customer'";
+                $query_cust = mysqli_query($koneksi, $sql_cust);
 
-                    while ($data_cust = mysqli_fetch_row($query_cust)) {
-                        $id_cust = $data_cust[0];
-                        $nama = $data_cust[1];
-                        $alamat = $data_cust[2];
-                        $kodepos = $data_cust[3];
-                        $telepon = $data_cust[4];
-                        $id_user = $data_cust[5];
-                    }
-                ?>
+                while ($data_cust = mysqli_fetch_row($query_cust)) {
+                    $id_cust = $data_cust[0];
+                    $nama = $data_cust[1];
+                    $alamat = $data_cust[2];
+                    $kodepos = $data_cust[3];
+                    $telepon = $data_cust[4];
+                    $id_user = $data_cust[5];
+                }
+            ?>
+            <form action="index.php?page=konfirmasi-checkout" method="POST" enctype="multipart/form-data">
                 <div class="row mb-2" data-aos="fade-up" data-aos-delay="200" id="locations">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="recipient">Recipient</label>
+                            <label for="recipient">Recipient <b style="color: red">*</b></label>
                             <input type="text" class="form-control" id="recipient" value="<?php echo $nama ?>" required name="penerima"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="address_one">Address</label>
+                            <label for="address_one">Address <b style="color: red">*</b></label>
                             <input type="text" class="form-control" id="address_one" value="<?php echo $alamat ?>" required name="address"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="kodepos">Postal Code</label>
+                            <label for="kodepos">Postal Code <b style="color: red">*</b></label>
                             <input type="text" class="form-control" id=kodepos" value="<?php echo $kodepos ?>" required name="kodepos"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="phone_number">Mobile</label>
+                            <label for="phone_number">Mobile <b style="color: red">*</b></label>
                             <input type="text" class="form-control" id="phone_number" value="<?php echo $telepon ?>" required name="phone_number"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="catatan">Catatan</label>
+                            <label for="catatan">Catatan </label>
                             <input type="text" class="form-control" id="catatan" name="catatan"/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="rekening">Silahkan Pilih Rekening Pembayaran</label>
+                            <label for="rekening">Pilih Rekening Pembayaran <b style="color: red">*</b></label>
                             <select name="rekening" class="form-control" id="rekening">
                                 <?php
                                     $sql_rek = "SELECT * FROM `rekening_pembayaran`";

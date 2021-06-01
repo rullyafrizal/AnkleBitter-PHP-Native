@@ -13,6 +13,8 @@
             include('./pages/konfirmasiCart.php');
         } else if ($page === 'konfirmasi-checkout') {
             include('./pages/konfirmasiCheckout.php');
+        } else if ($page === 'konfirmasi-pembayaran') {
+            include('./pages/konfirmasiPembayaran.php');
         }
     }
 ?>
@@ -47,6 +49,8 @@
                 include('./pages/cart.php');
             } else if ($page === 'checkout') {
                 include('./pages/checkout.php');
+            } else if ($page === 'confirm-payment') {
+                include('./pages/confirmPayment.php');
             }
         } else {
             include('./pages/home.php');
