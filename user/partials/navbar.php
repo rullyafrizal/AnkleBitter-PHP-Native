@@ -82,6 +82,18 @@
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="navbar-nav d-block d-lg-none">
+                                <li class="nav-item">
+                                    <a href="dashboard.php?page=index" class="nav-link">
+                                        Hi, <?= $nama;?>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="index.php?page=cart" class="nav-link d-inline-block">
+                                        Cart
+                                    </a>
+                                </li>
+                            </ul>
                         <?php
                     } else if ($_SESSION['role'] === 'admin') {
                         ?>

@@ -86,8 +86,8 @@ if (isset($_POST['checkout'])) {
         mysqli_commit($koneksi);
 
         header('Location:index.php?page=checkout&notif=success&data=' . $id_order);
-    } catch (mysqli_sql_exception $exception) {
-        mysqli_rollback($koneksi);
+    } catch (Exception $e) {
+        mysqli_rollback($e);
         header('Location:index.php?page=checkout&notif=error');
     }
 

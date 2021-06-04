@@ -15,9 +15,6 @@ if (isset($_POST['register'])) {
                     VALUES  ('$nama', '$email', '$password', 'customer')";
         $query_r = mysqli_query($koneksi, $sql_r);
 
-
-
-
         // auto-login setelah registrasi
         $sql_l = "select `id_user`, `role` from `user` where `email`='$email' and `password`='$password'";
         $query_l = mysqli_query($koneksi, $sql_l);

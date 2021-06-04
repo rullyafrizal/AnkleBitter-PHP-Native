@@ -79,7 +79,7 @@
                                                         Price Amount
                                                     </div>
                                                     <div class="product-subtitle">
-                                                        <?= $harga; ?>
+                                                        <?php echo 'Rp'. number_format($harga, 0, ",", "."); ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
