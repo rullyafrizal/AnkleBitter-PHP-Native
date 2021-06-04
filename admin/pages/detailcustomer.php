@@ -1,14 +1,15 @@
 <?php
 if (isset($_GET['data'])) {
-  $id_konten = $_GET['data'];
-  $_SESSION['id_konten'] = $id_konten;
-  //get data konten
-  $sql_m = "SELECT `tanggal`,`judul`,`isi` FROM `konten` WHERE `id_konten`='$id_konten'";
+  $id_customer = $_GET['data'];
+  //get data customer
+  $sql_m = "SELECT * FROM `customer` WHERE `id_customer`='$id_customer'";
   $query_m = mysqli_query($koneksi, $sql_m);
   while ($data_m = mysqli_fetch_row($query_m)) {
-    $tanggal = $data_m[0];
-    $judul = $data_m[1];
-    $isi = $data_m[2];
+    $cust = $data_m[0];
+    $nama = $data_m[1];
+    $alamat = $data_m[2];
+    $kodepos = $data_m[3];
+    $telp = $data_m[4];
   }
 }
 ?>
@@ -23,9 +24,9 @@ if (isset($_GET['data'])) {
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="index.php?include=profil">Home</a></li>
-              <li class="breadcrumb-item"><a href="index.php?include=konten">Data Konten</a></li>
-              <li class="breadcrumb-item active">Detail Data Konten</li>
+              <li class="breadcrumb-item"><a href="index.php?pages=profile">Home</a></li>
+              <li class="breadcrumb-item"><a href="index.php?pages=customer">Data Customer</a></li>
+              <li class="breadcrumb-item active">Detail Data Customer</li>
             </ol>
           </div>
         </div>
@@ -37,7 +38,7 @@ if (isset($_GET['data'])) {
             <div class="card">
               <div class="card-header">
                 <div class="card-tools">
-                  <a href="index.php?include=konten" class="btn btn-sm btn-warning float-right">
+                  <a href="index.php?pages=customer" class="btn btn-sm btn-warning float-right">
                   <i class="fas fa-arrow-alt-circle-left"></i> Kembali</a>
                 </div>
               </div>
@@ -46,17 +47,25 @@ if (isset($_GET['data'])) {
                 <table class="table table-bordered">
                     <tbody>                
                       <tr>
-                        <td width="20%"><strong>Tanggal<strong></td>
-                        <td width="80%"><?= $tanggal; ?></td>
+                        <td width="20%"><strong>ID Customer<strong></td>
+                        <td width="80%"><?= $cust; ?></td>
                       </tr>
                       <tr>
-                        <td width="20%"><strong>Judul<strong></td>
-                        <td width="80%"><?= $judul; ?></td></td>
+                        <td width="20%"><strong>Nama Customer<strong></td>
+                        <td width="80%"><?= $nama; ?></td></td>
                       </tr> 
                       <tr>
-                        <td width="20%"><strong>Sinopsis<strong></td>
-                        <td width="80%"><?= $isi; ?></td>
+                        <td width="20%"><strong>Alamat Customer<strong></td>
+                        <td width="80%"><?= $alamat; ?></td>
                       </tr> 
+                      <tr>
+                        <td width="20%"><strong>Kode Pos<strong></td>
+                        <td width="80%"><?= $kodepos; ?></td>
+                      </tr>
+                      <tr>
+                        <td width="20%"><strong>Nomor Telepon<strong></td>
+                        <td width="80%"><?= $telp; ?></td>
+                      </tr>
                     </tbody>
                   </table>  
               </div>

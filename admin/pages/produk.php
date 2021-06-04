@@ -100,7 +100,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
           </thead>
           <tbody>
             <?php
-            $batas = 3;
+            $batas = 5;
             if (!isset($_GET['halaman'])) {
               $posisi = 0;
               $halaman = 1;
@@ -124,11 +124,11 @@ if (isset($_SESSION['katakunci_kategori'])) {
                     INNER JOIN `kategori_produk` `k` ON `p`.`id_kategori_produk` = `k`.`id_kategori_produk` 
                     INNER JOIN `brand_produk` `b` ON `p`.`id_brand_produk` = `b`.`id_brand_produk`";
             if (!empty($katakunci_kategori)) {
-              $sql .= " AND `nama` LIKE '%$katakunci_kategori%'";
+              $sql .= " AND `id_produk` LIKE '%$katakunci_kategori%'";
             }
-            $sql .= " ORDER BY `nama` limit $posisi, $batas";
+            $sql .= " ORDER BY `id_produk` DESC limit $posisi, $batas";
             $query_k = mysqli_query($koneksi, $sql);
-            $no = $posisi + 1;
+            //$no = $posisi + 1;
             while ($data_k = mysqli_fetch_row($query_k)) {
               $id_produk = $data_k[0];
               $nama = $data_k[1];
@@ -139,7 +139,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
             ?>
               <tr>
                 <td>
-                  <center><?= $no; ?><center>
+                  <center><?= $id_produk; ?><center>
                 </td>
                 <td>
                   <center><?= $nama; ?><center>
@@ -164,7 +164,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
                     Hapus</a>
                 </td>
               </tr>
-            <?php $no++;
+            <?php
             } ?>
           </tbody>
         </table>

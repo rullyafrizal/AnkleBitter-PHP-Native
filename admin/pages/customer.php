@@ -131,7 +131,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
                 <td><center><?= $nomor_telepon; ?></center></td>
                 <td align="center">
                   <a href="index.php?pages=detailcustomer&data=<?= $id_customer; ?>" class="btn btn-xs btn-info" title="Detail"><i class="fas fa-eye"></i></a>
-                  <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?= $nama; ?>?'))window.location.href='index.php?pages=customer&aksi=hapus&data=<?= $id_customer; ?>&notif=hapusberhasil'" class="btn btn-xs btn-warning"><i class="fas fa-trash"></i>
+                  <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?= $nama; ?>?'))window.location.href='index.php?pages=customer&aksi=hapus&data=<?= $nama; ?>&notif=hapusberhasil'" class="btn btn-xs btn-warning"><i class="fas fa-trash"></i>
                     Hapus</a>
                 </td>
               </tr>

@@ -2,18 +2,30 @@
 if (isset($_GET['data'])) {
   $id_produk = $_GET['data'];
   $_SESSION['id_produk'] = $id_produk;
-  $sql_a = "SELECT * FROM `produk` WHERE `id_produk` = '$id_produk'";
+  $sql_a = "SELECT `p`.`title`, `p`.`nama`, `p`.`deskripsi`, `p`.`harga`, `p`.`stok`,
+  `p`.`gambar`, `p`.`created_at`, `p`.`updated_at`, `k`.`id_kategori_produk`, `k`.`kategori`,
+  `b`.`id_brand_produk`, `b`.`brand`, `a`.`nama` FROM `produk` `p`
+  INNER JOIN `kategori_produk` `k` ON `p`.`id_kategori_produk` = `k`.`id_kategori_produk` 
+  INNER JOIN `brand_produk` `b` ON `p`.`id_brand_produk` = `b`.`id_brand_produk`
+  INNER JOIN `user` `a` ON `p`.`user_id` = `a`.`id_user` 
+  WHERE `id_produk` = '$id_produk'";
+  // $sql_a = "SELECT `title`, `nama`, `deskripsi`,
+  // `harga`, `stok`, `gambar`, `created_at`, `updated_at`, `id_kategori_produk`, `id_brand_produk`
+  // FROM `produk` WHERE `id_produk` = '$id_produk'";
   $query_a = mysqli_query($koneksi, $sql_a);
   while ($data_a = mysqli_fetch_row($query_a)) {
-    $id_produk = $data_a[0];
-    $title = $data_a[1];
-    $nama = $data_a[2];
-    $deskripsi = $data_a[3];
-    $harga = $data_a[4];
-    $stok = $data_a[5];
-    $kategori_produk = $data_a[6];
-    $kategori_brand = $data_a[7];
+    $title = $data_a[0];
+    $nama = $data_a[1];
+    $deskripsi = $data_a[2];
+    $harga = $data_a[3];
+    $stok = $data_a[4];
+    $gambar = $data_a[5];
+    $masuk = $data_a[6];
+    $update = $data_a[7];
+    $id_kategori_produk= $data_a[8];
+    $id_brand_produk = $data_a[10];
   }
+
 }
 ?>
 <!-- Content Header (Page header) -->
@@ -52,16 +64,25 @@ if (isset($_GET['data'])) {
       <?php if ((!empty($_GET['notif'])) && (!empty($_GET['jenis']))) { ?>
         <?php if ($_GET['notif'] == "editkosong") { ?>
           <div class="alert alert-danger" role="alert">Maaf data
-            <?= $_GET['jenis']." produk"; ?> wajib di isi</div>
+            <?= $_GET['jenis'] . " produk"; ?> wajib di isi</div>
         <?php } ?>
       <?php } ?>
     </div>
     <form class="form-horizontal" action="index.php?pages=konfirmasieditproduk" method="post" enctype="multipart/form-data">
       <div class="card-body">
         <div class="form-group row">
-          <label for="title" class="col-sm-3 col-form-label">Title</label>
+          <label for="foto" class="col-sm-3 col-form-label">Gambar Produk</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" name="title" id="title" value="<?= $title; ?>">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="gambar" id="customFile">
+              <label class="custom-file-label" for="customFile"></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Title" class="col-sm-3 col-form-label">Title</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" name="title" id="Title" value="<?= $title; ?>">
           </div>
         </div>
         <div class="form-group row">
@@ -70,24 +91,22 @@ if (isset($_GET['data'])) {
             <input type="text" class="form-control" name="nama" id="nama" value="<?= $nama; ?>">
           </div>
         </div>
-          <div class="form-group row">
-              <div class="col-sm-3 col-form-label">
-                  Deskripsi
-              </div>
-              <div class="col-sm-7">
-                  <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;"><?php echo $deskripsi;?></textarea>
-              </div>
-          </div>
         <div class="form-group row">
-          <label for="harga" class="col-sm-3 col-form-label">Harga Produk</label>
+          <label class="col-sm-3 col-form-label">Deskripsi</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" name="harga" id="harga" value="<?= $harga; ?>">
+            <textarea class="textarea" name="deskripsi" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;"><?php echo $deskripsi; ?></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label for="stok" class="col-sm-3 col-form-label">Stok Produk</label>
+          <label for="Harga" class="col-sm-3 col-form-label">Harga Produk</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" name="stok" id="stok" value="<?= $stok; ?>">
+            <input type="text" class="form-control" name="harga" id="Harga" value="<?= $harga; ?>">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="Stok" class="col-sm-3 col-form-label">Stok Produk</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" name="stok" id="Stok" value="<?= $stok; ?>">
           </div>
         </div>
         <div class="form-group row">
@@ -102,15 +121,17 @@ if (isset($_GET['data'])) {
                 $id_kat = $data_k[0];
                 $kat = $data_k[1];
               ?>
-                <option value="<?= $id_kat; ?>"><?= $kat; ?></option>
+                <!-- <option value="<?= $id_kat; ?>"><?= $kat; ?></option> -->
+                <option value="<?= $id_kat; ?>" <?php if ($id_kat == $id_kategori_produk) { ?> selected <?php } ?>><?= $kat; ?></option>
               <?php } ?>
             </select>
           </div>
         </div>
+        
         <div class="form-group row">
-          <label for="brand" class="col-sm-3 col-form-label">Brand Produk</label>
+          <label for="Brand" class="col-sm-3 col-form-label">Brand Produk</label>
           <div class="col-sm-7">
-            <select class="form-control" id="brand" name="brand">
+            <select class="form-control" id="Brand" name="brand">
               <option value="">- Pilih Brand -</option>
               <?php
               $sql_t = "SELECT `id_brand_produk`,`brand` FROM `brand_produk` ORDER BY `brand`";
@@ -119,12 +140,25 @@ if (isset($_GET['data'])) {
                 $id_brand = $data_t[0];
                 $brand = $data_t[1];
               ?>
-                <option value="<?= $id_brand; ?>"><?= $brand; ?></option>
+                <option value="<?= $id_brand; ?>" <?php if ($id_brand == $id_brand_produk) { ?> selected <?php } ?>><?= $brand; ?></option>
               <?php } ?>
             </select>
           </div>
         </div>
+        
+        <div class="form-group row">
+          <label for="Masuk" class="col-sm-3 col-form-label">Tanggal Masuk</label>
+          <div class="col-sm-7">
+            <input readonly type="text" class="form-control" name="masuk" id="Masuk" value="<?= $masuk; ?>">
+          </div>
+        </div>
 
+        <div class="form-group row">
+          <label for="Update" class="col-sm-3 col-form-label">Tanggal Diupdate</label>
+          <div class="col-sm-7">
+            <input readonly type="text" class="form-control" name="update" id="Update" value="<?= $update; ?>">
+          </div>
+        </div>
 
       </div>
   </div>

@@ -27,13 +27,13 @@ if (isset($_GET['data'])) {
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h3><i class="fas fa-user-tie"></i> Detail Data Riwayat Order</h3>
+        <h3><i class="fas fa-user-tie"></i> Detail Data Order</h3>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="index.php?pages=profile">Home</a></li>
-          <li class="breadcrumb-item"><a href="index.php?pages=produk">Data Riwayat Order</a></li>
-          <li class="breadcrumb-item active">Detail Data Riwayat Order</li>
+          <li class="breadcrumb-item"><a href="index.php?pages=order">Data Order</a></li>
+          <li class="breadcrumb-item active">Detail Data Order</li>
         </ol>
       </div>
     </div>
@@ -82,12 +82,29 @@ if (isset($_GET['data'])) {
             <td width="80%"><?= $rek; ?></td>
           </tr>
           <tr>
+            <?php 
+            $sql = "SELECT `foto` FROM `bukti_pembayaran` WHERE `id_order` = '$id_order'";
+            $query = mysqli_query($koneksi, $sql);
+            while($data = mysqli_fetch_row($query)){
+              $foto = $data[0];
+            }
+            ?>
+            <td width="20%"><strong>Bukti Pembayaran<strong></td>
+            <td width="80%"><img width="300px" src="../../user/assets/images/bukti_bayar/<?= $foto; ?>"></td>
+          </tr>
+          <tr>
             <td width="20%"><strong>Catatan Customer<strong></td>
             <td width="80%"><?= $catatan; ?></td>
           </tr>
           <tr>
             <td width="20%"><strong>Resi Pengiriman<strong></td>
-            <td width="80%"><?= $resi; ?></td>
+            <td width="80%"><img width="300px" src="foto/resi/<?php if($resi == ''){
+                                                  echo 'default.png';  
+                                                  } else {
+                                                    echo $resi;
+                                                  }
+                                                  ?>">
+            </td>
           </tr>
         </tbody>
       </table>

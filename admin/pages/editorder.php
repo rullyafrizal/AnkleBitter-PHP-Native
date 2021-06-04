@@ -81,12 +81,19 @@ if (isset($_GET['data'])) {
             <label for="Status" class="col-sm-3 col-form-label">Status</label>
             <div class="col-sm-7">
               <select class="form-control" id="Status" name="status">
+                  <?php
+                    $sql_status = "SELECT `status` FROM `order` WHERE `id_order`='$id_order'";
+                    $query_status = mysqli_query($koneksi, $sql_status);
+                    while ($data_status = mysqli_fetch_row($query_status)) {
+                        $status = $data_status[0];
+                    }
+                  ?>
                   <option value="">--Status Pesanan--</option>
-                  <option value="Menunggu Bukti Pembayaran">Menunggu Bukti Pembayaran</option>
-                  <option value="Pembayaran Diverifikasi">Pembayaran Diverifikasi</option>
-                  <option value="Pesanan Diproses">Pesanan Diproses</option>
-                  <option value="Pesanan Dikirim">Pesanan Dikirim</option>
-                  <option value="Pesanan Diterima">Pesanan Diterima</option>
+                  <option value="Menunggu Bukti Pembayaran" <?php if($status === 'Menunggu Bukti Pembayaran'){echo 'selected';}?>>Menunggu Bukti Pembayaran</option>
+                  <option value="Sedang Dikonfirmasi" <?php if($status === 'Pembayaran Diverifikasi'){echo 'selected';}?>>Pembayaran Diverifikasi</option>
+                  <option value="Pesanan Diproses" <?php if($status === 'Pesanan Diproses'){echo 'selected';}?>>Pesanan Diproses</option>
+                  <option value="Pesanan Dikirim" <?php if($status === 'Pesanan Dikirim'){echo 'selected';}?>>Pesanan Dikirim</option>
+                  <option value="Pesanan Diterima" <?php if($status === 'Pesanan Diterima'){echo 'selected';}?>>Pesanan Diterima</option>
               </select>
             </div>
         </div>
@@ -94,7 +101,7 @@ if (isset($_GET['data'])) {
           <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Order</label>
           <div class="col-sm-7">
             <div class="input-group-append">
-              <input readonly type="date" class="form-control" name="tanggal" id="tanggal" value="<?= $tanggal; ?>">
+              <input readonly type="text" class="form-control" name="tanggal" id="tanggal" value="<?= $tanggal; ?>">
             </div>
           </div>
         </div>

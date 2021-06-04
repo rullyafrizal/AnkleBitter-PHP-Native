@@ -22,7 +22,7 @@
     if (isset($_GET['data'])) {
         $id = $_GET['data'];
 
-        $sql_p = "SELECT `id_produk`, `title`, `deskripsi`, `harga`, `stok` FROM `produk` WHERE `id_produk`='$id'";
+        $sql_p = "SELECT `id_produk`, `title`, `deskripsi`, `harga`, `stok`, `gambar` FROM `produk` WHERE `id_produk`='$id'";
 
         $query_p = mysqli_query($koneksi, $sql_p);
 
@@ -32,6 +32,7 @@
             $deskripsi = $data[2];
             $harga = $data[3];
             $stok = $data[4];
+            $gambar = $data[5];
         }
 
     }
@@ -41,7 +42,7 @@
             <div class="row">
                 <div class="col-lg-8" data-aos="zoom-in">
                     <transition name="slide-fade" mode="out-in">
-                        <img src="./assets/images/contoh_vans.jpg" class="w-100 main-image" alt=""/>
+                        <img src="../admin/foto/produk/<?= $gambar;?>" class="w-100 main-image" alt=""/>
                     </transition>
                 </div>
             </div>

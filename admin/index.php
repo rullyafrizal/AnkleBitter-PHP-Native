@@ -20,7 +20,6 @@ if (isset($_GET["pages"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php include('partials/head.php'); ?>
 </head>
@@ -30,7 +29,7 @@ if (isset($_GET["pages"])) {
     $include = $_GET["pages"];
     //cek apakah ada session id admin
     if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'admin') {
-?>
+    ?>
 
         <body class="hold-transition sidebar-mini layout-fixed">
             <div class="wrapper">
@@ -67,6 +66,8 @@ if (isset($_GET["pages"])) {
                         include("pages/detailriwayatorder.php");
                     } else if ($include == "customer") {
                         include("pages/customer.php");
+                    }else if ($include == "detailcustomer") {
+                        include("pages/detailcustomer.php");
                     } else if ($include == "signout") {
                         include("pages/signout.php");
                     } else {
@@ -89,12 +90,19 @@ if (isset($_GET["pages"])) {
         </body>
 
     <?php
+    } else if (isset($_SESSION['id_user'])) {
+        if ($_SESSION['role'] === 'customer') {
+            echo "<script>
+                    alert('Access Restricted');
+                    window.location.href = '/user/index.php';
+                </script>";
+        }
     } else {
         //pemanggilan halaman form login
         include("pages/login.php");
     }
 } else {
-    if (isset($_SESSION['id_user'])) {
+    if (isset($_SESSION['id_user']) && $_SESSION['role'] === 'admin') {
         //pemanggilan ke halaman-halaman profil jika ada session
     ?>
 
@@ -126,7 +134,14 @@ if (isset($_GET["pages"])) {
 
             <?php include('partials/script.php'); ?>
         </body>
-<?php
+    <?php
+    } else if (isset($_SESSION['id_user'])) {
+        if ($_SESSION['role'] === 'customer') {
+            echo "<script>
+                    alert('Access Restricted');
+                    window.location.href = '/user/index.php';
+                </script>";
+        }
     } else {
         //pemanggilan halaman form login
         include("pages/login.php");

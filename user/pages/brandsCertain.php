@@ -38,9 +38,9 @@
                 <?php
                 if (isset($_GET['data'])) {
                     $id = $_GET['data'];
-                    $sql_p = "SELECT `id_produk`, `title`, `nama`, `harga` FROM `produk` WHERE `id_brand_produk`='$id' ORDER BY `id_produk`";
+                    $sql_p = "SELECT `id_produk`, `title`, `nama`, `harga`, `gambar` FROM `produk` WHERE `id_brand_produk`='$id' ORDER BY `id_produk` DESC";
                 } else {
-                    $sql_p = "SELECT `id_produk`, `title`, `nama`, `harga` FROM `produk` ORDER BY `id_produk`";
+                    $sql_p = "SELECT `id_produk`, `title`, `nama`, `harga`, `gambar` FROM `produk` ORDER BY `id_produk` DESC";
 
                 }
                 $query_p = mysqli_query($koneksi, $sql_p);
@@ -49,11 +49,12 @@
                     $title = $data_p[1];
                     $nama = $data_p[2];
                     $harga = $data_p[3];
+                    $gambar = $data_p[4];
                     echo '<div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
                                 <a href="index.php?page=product&data=' . $id_produk .'" class="component-products d-block">
                                     <div class="products-thumbnail">
                                         <div class="products-image"
-                                             style="background-image: url('. "https://dummyimage.com/16:9x1080" . ')"></div>
+                                             style="background-image: url('. "../admin/foto/produk/$gambar" . ')"></div>
                                     </div>
                                     <div class="products-text">
                                         ' . $title . '

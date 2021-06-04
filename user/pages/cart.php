@@ -62,7 +62,7 @@
                                     $format_harga = number_format($harga, 0, ",", ".");
                                     echo '<tr>
                                         <td style="width: 20%;">
-                                            <img src="https://dummyimage.com/16:9x1080" alt="" class="cart-image"/>
+                                            <img src="../admin/foto/produk/' . $gambar_produk . '" alt="" class="cart-image"/>
                                         </td>
                                         <td style="width: 45%;">
                                             <div class="product-title">' . $nama_produk . '</div>

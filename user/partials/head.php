@@ -4,6 +4,7 @@
 <meta name="author" content="" />
 <link rel="stylesheet" crossorigin="anonymous" href="./assets/styles/main-2.css">
 <script src="./assets/scripts/main.js"></script>
+<link rel="icon" href="./assets/images/logo.png" type="image/x-icon">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <link href="./assets/styles/main.css" rel="stylesheet" />
 <link href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap' rel='stylesheet'>

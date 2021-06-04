@@ -25,7 +25,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-9 pb-5 pt-1" data-aos="fade-up" data-aos-delay="100">
-                            <a href="#" class="btn btn-success mt-4 px-4 btn-block">
+                            <a href="dashboard.php?page=transactions" class="btn btn-success mt-4 px-4 btn-block">
                                 Lihat Status Pesanan
                             </a>
                         </div>

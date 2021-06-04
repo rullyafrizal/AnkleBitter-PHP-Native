@@ -84,7 +84,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
           </thead>
           <tbody>
             <?php
-            $batas = 3;
+            $batas = 5;
             if (!isset($_GET['halaman'])) {
               $posisi = 0;
               $halaman = 1;
@@ -99,7 +99,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
             if (!empty($katakunci_kategori)) {
               $sql_jum .= " AND `id_order` LIKE '%$katakunci_kategori%'";
             }
-            $sql_jum .= " order by `id_order`";
+            $sql_jum .= "where `status`='Pesanan Diterima'  order by `id_order`";
             $query_jum = mysqli_query($koneksi, $sql_jum);
             $jum_data = mysqli_num_rows($query_jum);
             $jum_halaman = ceil($jum_data / $batas);
@@ -110,7 +110,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
             if (!empty($katakunci_kategori)) {
               $sql .= " AND `id_order` LIKE '%$katakunci_kategori%'";
             }
-            $sql .= " ORDER BY `id_order` limit $posisi, $batas";
+            $sql .= "WHERE `status`='Pesanan Diterima' ORDER BY `id_order` limit $posisi, $batas";
             $query_k = mysqli_query($koneksi, $sql);
             //$no = $posisi + 1;
             while ($data_k = mysqli_fetch_row($query_k)) {

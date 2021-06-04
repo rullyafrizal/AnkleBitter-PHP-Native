@@ -50,12 +50,13 @@
                         <ul class="navbar-nav d-none d-lg-flex">
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                                        <img src="./assets/images/icon-user.png" alt="" width="35x" class="rounded-circle mr-2 profile-picture"/>
+                                        <img src="./assets/images/icon-user.png" alt="" width="35px" class="rounded-circle mr-2 profile-picture"/>
                                         Hi, <?php echo $nama;?>
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item">Dashboard</a>
-                                        <a href="#" class="dropdown-item">Settings</a>
+                                        <a href="dashboard.php?page=index" class="dropdown-item">Dashboard</a>
+                                        <a href="dashboard.php?page=account" class="dropdown-item">Account Settings</a>
+                                        <a href="dashboard.php?page=transactions" class="dropdown-item">Transactions</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="index.php?page=logout">
                                             Logout
@@ -92,7 +93,6 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a href="/admin/index.php" class="dropdown-item">Dashboard</a>
-                                    <a href="#" class="dropdown-item">Settings</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="index.php?page=logout">
                                         Logout

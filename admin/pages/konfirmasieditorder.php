@@ -37,8 +37,7 @@ if (isset($_SESSION['id_order'])) {
             mysqli_query($koneksi, $sql);
         } else {
             $sql = "update `order` set `ordered_at`='$tanggal', `alamat_pengiriman`='$alamat',
-            `status`='$status',`total_harga`='$harga', `catatan`='$catatan', `id_rekening_pembayaran`='$id_rek', 
-            `id_customer`='$id_customer' where `id_order`='$id_order'";
+            `status`='$status',`total_harga`='$harga', `catatan`='$catatan', `id_rekening_pembayaran`='$id_rek', `id_customer`='$id_customer' where `id_order`='$id_order'";
             mysqli_query($koneksi, $sql);
         }
          header("Location:index.php?pages=order&notif=editberhasil");

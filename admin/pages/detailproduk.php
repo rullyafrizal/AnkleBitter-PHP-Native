@@ -1,9 +1,13 @@
 <?php
 if (isset($_GET['data'])) {
   $id_produk = $_GET['data'];
-  $sql = "SELECT `p`.`id_produk`, `p`.`title`, `p`.`nama`, `p`.`deskripsi`, `p`.`harga`, `p`.`stok`,`k`.`kategori`,`b`.`brand` FROM `produk` `p`
+  $sql = "SELECT `p`.`id_produk`, `p`.`title`, `p`.`nama`, `p`.`deskripsi`, `p`.`harga`, `p`.`stok`,
+  `p`.`gambar`, `p`.`created_at`, `p`.`updated_at`, `k`.`kategori`,`b`.`brand`, `a`.`nama` FROM `produk` `p`
   INNER JOIN `kategori_produk` `k` ON `p`.`id_kategori_produk` = `k`.`id_kategori_produk` 
-  INNER JOIN `brand_produk` `b` ON `p`.`id_brand_produk` = `b`.`id_brand_produk`";
+  INNER JOIN `brand_produk` `b` ON `p`.`id_brand_produk` = `b`.`id_brand_produk`
+  INNER JOIN `user` `a` ON `p`.`user_id` = `a`.`id_user` 
+  WHERE `id_produk` = '$id_produk'";
+  //$sql = "SELECT * FROM `produk` WHERE `id_produk` = '$id_produk'";
   $query = mysqli_query($koneksi, $sql);
   while ($data = mysqli_fetch_row($query)) {
       $id_produk = $data[0];
@@ -12,8 +16,12 @@ if (isset($_GET['data'])) {
       $deskripsi = $data[3];
       $harga = $data[4];
       $stock = $data[5];
-      $kategori = $data[6];
-      $brand = $data[7];
+      $gambar = $data[6];
+      $created_at = $data[7];
+      $updated_at = $data[8];
+      $produk = $data[9];
+      $brand = $data[10];
+      $admin = $data[11];
   }
 }
 ?>
@@ -50,7 +58,7 @@ if (isset($_GET['data'])) {
             <table class="table table-bordered">
                 <tr>
                   <td width="20%"><strong>Gambar Produk<strong></td>
-                  <td width="80%">Belum diedit di codingan</td>
+                  <td width="80%"><img width="300px" src="foto/produk/<?= $gambar; ?>" alt="gambar produk"></td>
                 </tr>
               <tbody>
                 <tr>
@@ -75,11 +83,23 @@ if (isset($_GET['data'])) {
                 </tr>
                 <tr>
                   <td width="20%"><strong>Kategori Produk<strong></td>
-                  <td width="80%"><?= $kategori; ?></td>
+                  <td width="80%"><?= $produk; ?></td>
                 </tr>
                 <tr>
                   <td width="20%"><strong>Brand Produk<strong></td>
                   <td width="80%"><?= $brand; ?></td>
+                </tr>
+                <tr>
+                  <td width="20%"><strong>Tanggal Ditambahkan<strong></td>
+                  <td width="80%"><?= $created_at; ?></td>
+                </tr>
+                <tr>
+                  <td width="20%"><strong>Tanggal Diubah<strong></td>
+                  <td width="80%"><?= $updated_at; ?></td>
+                </tr>
+                <tr>
+                  <td width="20%"><strong>Executed By<strong></td>
+                  <td width="80%"><?= $admin; ?></td>
                 </tr>
               </tbody>
             </table>

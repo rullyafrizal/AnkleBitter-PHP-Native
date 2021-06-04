@@ -7,7 +7,8 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($koneksi, MD5($pass));
 
     //cek username dan password
-    $sql = "select `id_user`, `role` from `user` where `email`='$username' and `password`='$password'";
+    $sql = "select `id_user`, `role` from `user` 
+            where `email`='$username' and `password`='$password' and `role`='admin'";
     $query = mysqli_query($koneksi, $sql);
     $jumlah = mysqli_num_rows($query);
     if (empty($user)) {
