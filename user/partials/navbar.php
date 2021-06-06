@@ -23,6 +23,7 @@
                     echo '<li class="nav-item">
                             <a href="index.php?page=register" class="nav-link">Sign Up</a>
                         </li>
+                        <div class="dropdown-divider"></div>
                         <li class="nav-item">
                             <a href="index.php?page=login" class="btn btn-success nav-link px-4 text-white">Sign In</a>
                         </li>';
@@ -92,6 +93,10 @@
                                     <a href="index.php?page=cart" class="nav-link d-inline-block">
                                         Cart
                                     </a>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                                <li class="nav-item">
+                                    <a href="index.php?page=logout" class="btn btn-danger nav-link px-4 text-white">Sign Out</a>
                                 </li>
                             </ul>
                         <?php

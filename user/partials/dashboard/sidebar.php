@@ -15,7 +15,8 @@
         <a href="dashboard.php?page=account" class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ? 'active' : '' }} ">
             My Account
         </a>
-        <a href="index.php?page=logout" class="list-group-item list-group-item-action">
+        <div class="dropdown-divider"></div>
+        <a href="index.php?page=logout" class="btn btn-danger nav-link px-4 mx-2 text-white">
             Sign Out
         </a>
     </div>
