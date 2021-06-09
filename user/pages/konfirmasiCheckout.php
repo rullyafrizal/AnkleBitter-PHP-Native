@@ -46,7 +46,7 @@ if (isset($_POST['checkout'])) {
             mysqli_query($koneksi, $sql_item);
         }
 
-        $sql_cart1 = "SELECT DISTINCT(`id_produk`) FROM `keranjang_belanja` WHERE `id_customer`='5'";
+        $sql_cart1 = "SELECT DISTINCT(`id_produk`) FROM `keranjang_belanja` WHERE `id_customer`='$id_cust'";
         $query_cart = mysqli_query($koneksi, $sql_cart1);
         $i = 0;
         while ($data_cart = mysqli_fetch_row($query_cart)) {
@@ -62,7 +62,6 @@ if (isset($_POST['checkout'])) {
         }
 
         for ($i = 0; $i < count($id_product); $i++) {
-
             $sql_cek_stok = "SELECT `stok` FROM `produk` WHERE `id_produk`='$id_product[$i]'";
             $query_cek_stok = mysqli_query($koneksi, $sql_cek_stok);
             while ($data_cek_stok = mysqli_fetch_row($query_cek_stok)) {
@@ -87,7 +86,7 @@ if (isset($_POST['checkout'])) {
 
         header('Location:index.php?page=checkout&notif=success&data=' . $id_order);
     } catch (Exception $e) {
-        mysqli_rollback($e);
+        mysqli_rollback($koneksi);
         header('Location:index.php?page=checkout&notif=error');
     }
 

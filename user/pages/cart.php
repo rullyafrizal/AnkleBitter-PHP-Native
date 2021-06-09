@@ -4,7 +4,9 @@
             $id = $_GET['data'];
             $sql_delete = "DELETE FROM `keranjang_belanja` WHERE `id_keranjang_belanja`='$id'";
             mysqli_query($koneksi, $sql_delete);
-            header('Location:index.php?page=cart');
+            echo '<script>
+                       window.location.href = "index.php?page=cart" 
+                    </script>';
         }
     }
 ?>
